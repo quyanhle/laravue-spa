@@ -35,4 +35,5 @@
         return this.$store.getters.getCafes;
       }
   }
+}
 </script>
