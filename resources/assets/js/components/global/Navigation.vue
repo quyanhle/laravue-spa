@@ -82,6 +82,9 @@
 
 <script>
   export default {
+    created(){
+      this.$store.dispatch('loadUser', 1);
+    },
   	/*
       Defines the computed properties on the component.
     */

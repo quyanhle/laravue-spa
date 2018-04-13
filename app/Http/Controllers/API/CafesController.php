@@ -2,36 +2,36 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cafe;
+use Illuminate\Http\Request;
 
 class CafesController extends Controller
 {
     public function getCafes()
     {
-    	$cafes = Cafe::all();
-    	return response()->json($cafes);
+        $cafes = Cafe::all();
+        return response()->json($cafes);
     }
 
     public function getCafe($id)
     {
-    	$cafe = Cafe::findOrFail($id);
-    	return response()->json($cafe);
+        $cafe = Cafe::findOrFail($id);
+        return response()->json($cafe);
     }
 
-    public function postNewCafe()
+    public function postNewCafe(Request $request)
     {
-    	$cafe = new Cafe();
+        $cafe = new Cafe();
 
-		$cafe->name     = Request::get('name');
-		$cafe->address  = Request::get('address');
-		$cafe->city     = Request::get('city');
-		$cafe->state    = Request::get('state');
-		$cafe->zip      = Request::get('zip');
+        $cafe->name    = $request->name;
+        $cafe->address = $request->address;
+        $cafe->city    = $request->city;
+        $cafe->state   = $request->state;
+        $cafe->zip     = $request->zip;
 
-		$cafe->save();
+        $cafe->save();
 
-		return response()->json($cafe, 201);
+        return response()->json($cafe, 201);
     }
 }

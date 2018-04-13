@@ -10,26 +10,31 @@
           <div class="large-12 medium-12 small-12 cell">
             <label>Name
               <input type="text" placeholder="Cafe name" v-model="name">
+
             </label>
           </div>
           <div class="large-12 medium-12 small-12 cell">
             <label>Address
               <input type="text" placeholder="Address" v-model="address">
+              <span class="validation" v-show="!validations.name.is_valid">{{ validations.name.text }}</span>
             </label>
           </div>
           <div class="large-12 medium-12 small-12 cell">
             <label>City
               <input type="text" placeholder="City" v-model="city">
+              <span class="validation" v-show="!validations.city.is_valid">{{ validations.city.text }}</span>
             </label>
           </div>
           <div class="large-12 medium-12 small-12 cell">
             <label>State
               <input type="text" placeholder="State" v-model="state">
+              <span class="validation" v-show="!validations.state.is_valid">{{ validations.state.text }}</span>
             </label>
           </div>
           <div class="large-12 medium-12 small-12 cell">
             <label>Zip
               <input type="text" placeholder="Zip" v-model="zip">
+              <span class="validation" v-show="!validations.zip.is_valid">{{ validations.zip.text }}</span>
             </label>
           </div>
           <div class="large-12 medium-12 small-12 cell">
@@ -49,7 +54,29 @@
   			address: '',
   			city: '',
   			state: '',
-  			zip: ''
+  			zip: '',
+        validations: {
+          name: {
+            is_valid: true,
+            text: ''
+          },
+          address: {
+            is_valid: true,
+            text: ''
+          },
+          city: {
+            is_valid: true,
+            text: ''
+          },
+          state: {
+            is_valid: true,
+            text: ''
+          },
+          zip: {
+            is_valid: true,
+            text: ''
+          },
+        }
   		}
   	},
   	methods: {

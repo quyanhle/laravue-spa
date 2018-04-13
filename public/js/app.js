@@ -55942,6 +55942,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    this.$store.dispatch('loadUser', 1);
+  },
+
   /*
      Defines the computed properties on the component.
    */
@@ -56362,8 +56366,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+	created: function created() {
+		this.$store.dispatch('loadCafes');
+	},
+
+	computed: {
+		cafesLoadStatus: function cafesLoadStatus() {
+			return this.$store.getters.getCafesLoadStatus;
+		},
+		cafes: function cafes() {
+			return this.$store.getters.getCafes;
+		}
+	}
+});
 
 /***/ }),
 /* 97 */
@@ -56373,7 +56392,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { attrs: { id: "cafes" } }, [
+    _c(
+      "ul",
+      _vm._l(_vm.cafes, function(cafe) {
+        return _c("li", [_vm._v(_vm._s(cafe.name + " " + cafe.city))])
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -56525,29 +56551,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			name: '',
-			address: '',
-			city: '',
-			state: '',
-			zip: ''
-		};
-	},
+  data: function data() {
+    return {
+      name: '',
+      address: '',
+      city: '',
+      state: '',
+      zip: '',
+      validations: {
+        name: {
+          is_valid: true,
+          text: ''
+        },
+        address: {
+          is_valid: true,
+          text: ''
+        },
+        city: {
+          is_valid: true,
+          text: ''
+        },
+        state: {
+          is_valid: true,
+          text: ''
+        },
+        zip: {
+          is_valid: true,
+          text: ''
+        }
+      }
+    };
+  },
 
-	methods: {
-		submitNewCafe: function submitNewCafe() {
-			this.$store.dispatch('addCafe', {
-				name: this.name,
-				address: this.address,
-				city: this.city,
-				state: this.state,
-				zip: this.zip
-			});
-		}
-	}
+  methods: {
+    submitNewCafe: function submitNewCafe() {
+      this.$store.dispatch('addCafe', {
+        name: this.name,
+        address: this.address,
+        city: this.city,
+        state: this.state,
+        zip: this.zip
+      });
+    }
+  }
 
 });
 
@@ -56611,7 +56664,23 @@ var render = function() {
                     _vm.address = $event.target.value
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.validations.name.is_valid,
+                      expression: "!validations.name.is_valid"
+                    }
+                  ],
+                  staticClass: "validation"
+                },
+                [_vm._v(_vm._s(_vm.validations.name.text))]
+              )
             ])
           ]),
           _vm._v(" "),
@@ -56637,7 +56706,23 @@ var render = function() {
                     _vm.city = $event.target.value
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.validations.city.is_valid,
+                      expression: "!validations.city.is_valid"
+                    }
+                  ],
+                  staticClass: "validation"
+                },
+                [_vm._v(_vm._s(_vm.validations.city.text))]
+              )
             ])
           ]),
           _vm._v(" "),
@@ -56663,7 +56748,23 @@ var render = function() {
                     _vm.state = $event.target.value
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.validations.state.is_valid,
+                      expression: "!validations.state.is_valid"
+                    }
+                  ],
+                  staticClass: "validation"
+                },
+                [_vm._v(_vm._s(_vm.validations.state.text))]
+              )
             ])
           ]),
           _vm._v(" "),
@@ -56689,7 +56790,23 @@ var render = function() {
                     _vm.zip = $event.target.value
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.validations.zip.is_valid,
+                      expression: "!validations.zip.is_valid"
+                    }
+                  ],
+                  staticClass: "validation"
+                },
+                [_vm._v(_vm._s(_vm.validations.zip.text))]
+              )
             ])
           ]),
           _vm._v(" "),
