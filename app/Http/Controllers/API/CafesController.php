@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCafeRequest;
 use App\Models\Cafe;
-use Illuminate\Http\Request;
+use App\Utilities\GoogleMaps;
 
 class CafesController extends Controller
 {
@@ -20,15 +21,18 @@ class CafesController extends Controller
         return response()->json($cafe);
     }
 
-    public function postNewCafe(Request $request)
+    public function postNewCafe(StoreCafeRequest $request)
     {
         $cafe = new Cafe();
 
         $cafe->name    = $request->name;
         $cafe->address = $request->address;
         $cafe->city    = $request->city;
-        $cafe->state   = $request->state;
         $cafe->zip     = $request->zip;
+
+        $coordinates     = GoogleMaps::geocodeAddress($request->address, $request->city, $request->zip);
+        $cafe->latitude  = $coordinates['lat'];
+        $cafe->longitude = $coordinates['lng'];
 
         $cafe->save();
 
