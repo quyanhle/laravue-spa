@@ -18,16 +18,8 @@
 <script>
     import CafeMap from '../components/cafes/CafeMap.vue';  
   export default {
-  	created() {
-  		this.$store.dispatch('loadCafes');
-  	},
-  	computed: {
-  		cafesLoadStatus(){
-  			return this.$store.getters.getCafesLoadStatus;
-  		},
-  		cafes(){
-  			return this.$store.getters.getCafes;
-  		}
-  	}
+  	components: {
+        CafeMap
+    }
   }
 </script>

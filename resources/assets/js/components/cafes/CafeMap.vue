@@ -17,13 +17,13 @@
 			'latitude': {
 				type: Number,
 				default: function() {
-					return 39.50
+					return 10.790413
 				}
 			},
 			'longitude': {
 				type: Number,
 				default: function() {
-					return -98.35
+					return 106.690914
 				}
 			},
 			'zoom': {
