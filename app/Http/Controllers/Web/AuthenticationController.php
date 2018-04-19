@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 use Auth;
 use Socialite;
 
@@ -38,7 +38,7 @@ class AuthenticationController extends Controller
             $user = User::create($userData);
         }
         Auth::login($user);
-        return redirect('/');
+        return redirect('/#/home');
     }
 
 }
