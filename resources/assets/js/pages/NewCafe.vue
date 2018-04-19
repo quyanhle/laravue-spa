@@ -70,14 +70,15 @@
   	},
   	methods: {
   		submitNewCafe() {
-        if (this.validateNewCafe()) {
-    			this.$store.dispatch('addCafe', {
-    				name: this.name,
-    				address: this.address,
-    				city: this.city,
-    				zip: this.zip
-    			});
-        }
+            if (this.validateNewCafe()) {
+                    this.$store.dispatch('addCafe', {
+                        name: this.name,
+                        address: this.address,
+                        city: this.city,
+                        zip: this.zip
+                    });
+              this.$router.go(-1);
+            }
   		},
       validateNewCafe(){
         let validNewCafeForm = true;

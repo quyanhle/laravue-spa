@@ -23,7 +23,7 @@ Vue.use( VueRouter )
 export default new VueRouter({
     routes: [
         {
-            path: '/',
+            path: '/vue/',
             name: 'layout',
             component: Vue.component( 'Layout', require( './pages/Layout.vue' ) ),
             children: [

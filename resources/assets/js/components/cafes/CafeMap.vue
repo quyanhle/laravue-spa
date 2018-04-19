@@ -35,7 +35,8 @@
 		},
 		data() {
 			return {
-				markers: []
+				markers: [],
+				infoWindows: []
 			}
 		},
 		computed: {
@@ -63,6 +64,7 @@
 		methods: {
 			buildMarkers() {
 				this.markers = [];
+				this.infoWindows = [];
 				for (var i = 0; i < this.cafes.length; i++) {
 					var marker = new google.maps.Marker({
 						position: {
@@ -73,6 +75,22 @@
 						title: this.cafes[i].name,
 						animation: google.maps.Animation.DROP
 					});
+					var contentString = '<div id="content">'+
+				      '<div id="siteNotice">'+
+				      '</div>'+
+				      '<h1 id="firstHeading" class="firstHeading">'+this.cafes[i].name+'</h1>'+
+				      '<div id="bodyContent">'+
+				      '<p><b>'+this.cafes[i].name+'</b>' + this.cafes[i].address+
+				      '</div>'+
+				      '</div>';
+				    var infoWindow = new google.maps.InfoWindow({
+				     		content: contentString
+				     		}
+				     	);
+				    marker.addListener('click', function() {
+				     	infoWindow.open(this.map, this);
+				    });
+				    this.infoWindows.push(infoWindow);
 					this.markers.push(marker);
 				}
 			},

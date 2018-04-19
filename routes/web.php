@@ -19,6 +19,6 @@ Route::get('/logout', 'Web\AppController@getLogout')->name('logout');
 
 Route::get('/login/{social}/callback', 'Web\AuthenticationController@getSocialCallback')
     ->middleware('guest');
-// Route::get('/{vue_capture?}', function () {
-//     return view('app');
-// })->where('vue_capture', '[\/\w\.-]*');
+Route::get('/vue/{vue_capture?}', function () {
+    return view('app');
+})->where('vue_capture', '[\/\w\.-]*');
