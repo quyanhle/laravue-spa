@@ -8,7 +8,7 @@
     <span v-show="cafesLoadStatus == 3">Cafes loaded unsuccessfully!</span>
 
     <ul>
-      <li v-for="cafe in cafes">{{ cafe.name }}</li>
+      <li v-for="cafe in cafes">{{ cafe.name + ' ' + cafe.address}}</li>
     </ul>
   </div>
 </template>
