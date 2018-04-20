@@ -17,13 +17,13 @@
 			'latitude': {
 				type: Number,
 				default: function() {
-					return 10.790413;
+					return this.$store.getters.getCurrentLocation.latitude;
 				}
 			},
 			'longitude': {
 				type: Number,
 				default: function() {
-					return 106.690914;
+					return this.$store.getters.getCurrentLocation.longitude;
 				}
 			},
 			'zoom': {
@@ -42,6 +42,9 @@
 		computed: {
 			cafes() {
 				return this.$store.getters.getCafes;
+			},
+			currentLocation() {
+				return this.$store.getters.getCurrentLocation;
 			}
 		},
 		watch: {
@@ -52,7 +55,7 @@
 		},
 		mounted() {
 			this.map = new google.maps.Map(document.getElementById('cafe-map'), {
-		        center: {lat: this.latitude, lng: this.longitude},
+		        center: {lat: parseFloat(this.latitude), lng: parseFloat(this.longitude)},
 		        zoom: this.zoom
 		      });
 			/**
@@ -87,17 +90,20 @@
 				     		content: contentString
 				     		}
 				     	);
-				    marker.addListener('click', function() {
-				     	infoWindow.open(this.map, this);
-				    });
 				    this.infoWindows.push(infoWindow);
 					this.markers.push(marker);
+					this.openInfo(this.markers[i], this.infoWindows[i]);
 				}
 			},
 			clearMarkers() {
 				for (var i = 0; i< this.markers.length; i++) {
 					this.markers[i].setMap(null);
 				}
+			},
+			openInfo(marker, infoWindow){
+			    google.maps.event.addListener(marker, 'click', function() {
+			    	infoWindow.open(this.map, marker);
+			    });
 			}
 		}
 	}

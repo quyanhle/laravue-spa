@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCafeRequest;
 use App\Models\Cafe;
 use App\Utilities\GoogleMaps;
+use Illuminate\Http\Request;
 
 class CafesController extends Controller
 {
@@ -37,5 +38,18 @@ class CafesController extends Controller
         $cafe->save();
 
         return response()->json($cafe, 201);
+    }
+
+    public function getCurrentLocation(Request $request)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL            => 'http://api.ipstack.com/' . '14.161.22.110' . '?access_key=' . env('IP_GEO_KEY'),
+            //use $request->ip() for client ip add
+        ));
+        $location = curl_exec($curl);
+        curl_close($curl);
+        return $location;
     }
 }

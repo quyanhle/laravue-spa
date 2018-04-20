@@ -28,5 +28,11 @@ export default {
 		      zip: zip
 		    }
 		)
+	},
+	/**
+	 * GET /api/v1/location
+	 */
+	getLocation: function (){
+		return axios.get(LARAVUE_CONFIG.API_URL + '/location');
 	}
 }

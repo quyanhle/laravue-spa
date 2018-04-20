@@ -14,7 +14,8 @@ export const cafes = {
 
 		cafe: {},
 		cafeLoadStatus: 0,
-		cafeAddStatus: 0
+		cafeAddStatus: 0,
+		currentLocation: {}
 	},
 	actions: {
 		loadCafes( { commit } ){
@@ -53,6 +54,15 @@ export const cafes = {
         		.catch(function () {
         			commit('setCafeAddedStatus', 3);
         		});
+        },
+        loadCurrentLocation({commit}) {
+        	CafeAPI.getLocation()
+        		.then(function (response) {
+        			commit ('setCurrentLocation', response.data);
+        		})
+        		.catch(function() {
+        			commit('setCurrentLocation', {});
+        		});
         }
     },
     mutations: {
@@ -73,6 +83,9 @@ export const cafes = {
 	    },
 	    setCafeAddedStatus(state, status) {
 	    	state.cafeAddStatus = status;
+	    },
+	    setCurrentLocation(state, location) {
+	    	state.currentLocation = location;
 	    }
 	},
 	getters: {
@@ -93,6 +106,9 @@ export const cafes = {
 	    },
 	    getCafeAddStatus(state){
 	    	return state.cafeAddStatus;
+	    },
+	    getCurrentLocation(state) {
+	    	return state.currentLocation;
 	    }
 	}
 }
