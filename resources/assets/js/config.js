@@ -2,7 +2,7 @@
     Defines the API route we are using.
 */
 var api_url = '';
-var google_maps_js_api = 'AIzaSyChULvzGwFu_-g8cuyNtKegW6xsD0nJ_sc';
+var google_maps_js_api = 'AIzaSyC5Okcb4cpJv9pyJkQsuWRMCMKd2EbONUo';
 
 switch( process.env.NODE_ENV ){
   case 'development':

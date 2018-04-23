@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChULvzGwFu_-g8cuyNtKegW6xsD0nJ_sc"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Okcb4cpJv9pyJkQsuWRMCMKd2EbONUo"></script>
 
         <title>Laravue</title>
 
