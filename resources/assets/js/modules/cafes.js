@@ -58,7 +58,7 @@ export const cafes = {
         loadCurrentLocation({commit}) {
         	CafeAPI.getLocation()
         		.then(function (response) {
-        			commit ('setCurrentLocation', response.data);
+        			commit('setCurrentLocation', response.data);
         		})
         		.catch(function() {
         			commit('setCurrentLocation', {});

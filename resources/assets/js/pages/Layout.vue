@@ -16,9 +16,9 @@
   		Navigation
   	},
   	created() {
-  		this.$store.dispatch('loadCafes');
-  		this.$store.dispatch('loadUser');
       this.$store.dispatch('loadCurrentLocation');
+      this.$store.dispatch('loadCafes');
+      this.$store.dispatch('loadUser');
   	}
 
   }

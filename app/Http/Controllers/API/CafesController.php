@@ -50,6 +50,6 @@ class CafesController extends Controller
         ));
         $location = curl_exec($curl);
         curl_close($curl);
-        return $location;
+        echo $location;
     }
 }

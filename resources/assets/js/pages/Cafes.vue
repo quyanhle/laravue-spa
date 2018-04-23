@@ -17,6 +17,9 @@
 <script>
 	import CafeMap from '../components/cafes/CafeMap.vue';  
   export default {
+	created() {
+		this.$store.dispatch('loadCurrentLocation');
+	},
 	components: {
 		CafeMap
 	}

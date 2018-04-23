@@ -32,7 +32,7 @@ export default {
 	/**
 	 * GET /api/v1/location
 	 */
-	getLocation: function (){
+	getLocation: function(){
 		return axios.get(LARAVUE_CONFIG.API_URL + '/location');
 	}
 }
