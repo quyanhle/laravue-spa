@@ -55,25 +55,28 @@
 			cafes() {
 				this.clearMarkers();
 				this.buildMarkers();
+			},
+			cafe() {
+				this.clearMarkers();
+				this.buildMarkers();
 			}
 		},
 		mounted() {
-	
-				this.map = new google.maps.Map(document.getElementById('cafe-map'), {
-			        center: {lat: parseFloat(this.location.latitude), lng: parseFloat(this.location.longitude)},
-			        zoom: this.zoom
-			      });
-				/**
-				 * Clear and re-build the markers
-				 */
-				this.clearMarkers();
-				this.buildMarkers();
+			this.map = new google.maps.Map(document.getElementById('cafe-map'), {
+		        center: {lat: parseFloat(this.location.latitude), lng: parseFloat(this.location.longitude)},
+		        zoom: this.zoom
+		      });
+			/**
+			 * Clear and re-build the markers
+			 */
+			this.clearMarkers();
+			this.buildMarkers();
 		},
 		methods: {
 			buildMarkers() {
 				this.markers = [];
 				this.infoWindows = [];
-				if (!this.cafe) {
+				if (this.$route.fullPath == '/vue/cafes') {
 					for (var i = 0; i < this.cafes.length; i++) {
 						var marker = new google.maps.Marker({
 							position: {
@@ -101,6 +104,9 @@
 						this.openInfo(this.markers[i], this.infoWindows[i]);
 					}
 				} else {
+					this.markers = [];
+					this.infoWindows = [];
+					console.log(this.cafe);
 					var marker = new google.maps.Marker({
 							position: {
 								lat: parseFloat(this.cafe.latitude),
@@ -110,21 +116,21 @@
 							title: this.cafe.name,
 							animation: google.maps.Animation.DROP
 						});
-						var contentString = '<div id="content">'+
-					      '<div id="siteNotice">'+
-					      '</div>'+
-					      '<h1 id="firstHeading" class="firstHeading">'+this.cafe.name+'</h1>'+
-					      '<div id="bodyContent">'+
-					      '<p><b>'+this.cafe.name+'</b>' + this.cafe.address+
-					      '</div>'+
-					      '</div>';
-					    var infoWindow = new google.maps.InfoWindow({
-					     		content: contentString
-					     		}
-					     	);
-					    this.infoWindows.push(infoWindow);
-						this.markers.push(marker);
-						this.openInfo(this.markers[0], this.infoWindows[0]);
+					var contentString = '<div id="content">'+
+				      '<div id="siteNotice">'+
+				      '</div>'+
+				      '<h1 id="firstHeading" class="firstHeading">'+this.cafe.name+'</h1>'+
+				      '<div id="bodyContent">'+
+				      '<p><b>'+this.cafe.name+'</b>' + this.cafe.address+
+				      '</div>'+
+				      '</div>';
+				    var infoWindow = new google.maps.InfoWindow({
+				     		content: contentString
+				     		}
+				     	);
+				    this.infoWindows.push(infoWindow);
+					this.markers.push(marker);
+					this.openInfo(this.markers[0], this.infoWindows[0]);
 				}
 			},
 			clearMarkers() {

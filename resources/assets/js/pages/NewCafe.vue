@@ -77,7 +77,7 @@
                         city: this.city,
                         zip: this.zip
                     });
-              this.$router.go(-1);
+              this.$router.push({name: 'cafes'});
             }
   		},
       validateNewCafe(){

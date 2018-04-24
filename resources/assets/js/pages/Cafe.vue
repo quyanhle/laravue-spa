@@ -32,6 +32,5 @@
                 return this.$store.getters.getCafe;
             }
         }
-
   }
 </script>
