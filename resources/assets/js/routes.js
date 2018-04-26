@@ -21,6 +21,9 @@ Vue.use( VueRouter )
     for the app.
 */
 export default new VueRouter({
+    mode: 'history',
+    hashbang: false,
+    root: '/vue',
     routes: [
         {
             path: '/vue/',

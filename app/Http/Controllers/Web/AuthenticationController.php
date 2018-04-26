@@ -38,7 +38,7 @@ class AuthenticationController extends Controller
             $user = User::create($userData);
         }
         Auth::login($user);
-        return redirect('/#/vue/home');
+        return redirect('/vue/home');
     }
 
 }

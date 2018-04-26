@@ -17,13 +17,13 @@
 			'latitude': {
 				type: Number,
 				default: function() {
-					return 10.765399;
+					return JSON.parse(localStorage.getItem('thisLocation')).latitude;
 				}
 			},
 			'longitude': {
 				type: Number,
 				default: function() {
-					return 106.689732;
+					return JSON.parse(localStorage.getItem('thisLocation')).longitude;
 				}
 			},
 			'zoom': {
@@ -36,8 +36,7 @@
 		data() {
 			return {
 				markers: [],
-				infoWindows: [],
-				// location: this.$store.getters.getCurrentLocation
+				infoWindows: []
 			}
 		},
 		computed: {
@@ -63,7 +62,7 @@
 		},
 		mounted() {
 			this.map = new google.maps.Map(document.getElementById('cafe-map'), {
-		        center: {lat: parseFloat(this.location.latitude), lng: parseFloat(this.location.longitude)},
+		        center: {lat: parseFloat(this.latitude), lng: parseFloat(this.longitude)},
 		        zoom: this.zoom
 		      });
 			/**
@@ -106,7 +105,6 @@
 				} else {
 					this.markers = [];
 					this.infoWindows = [];
-					console.log(this.cafe);
 					var marker = new google.maps.Marker({
 							position: {
 								lat: parseFloat(this.cafe.latitude),

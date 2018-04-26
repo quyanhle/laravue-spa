@@ -59,6 +59,7 @@ export const cafes = {
         	CafeAPI.getLocation()
         		.then(function (response) {
         			commit('setCurrentLocation', response.data);
+        			localStorage.setItem('thisLocation', JSON.stringify(response.data));
         		})
         		.catch(function() {
         			commit('setCurrentLocation', {});
