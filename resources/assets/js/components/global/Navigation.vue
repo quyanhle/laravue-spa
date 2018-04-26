@@ -2,7 +2,7 @@
 	@import '~@/abstracts/_variables.scss';
 
 	nav.top-navigation{
-	background-color: $white;
+	background-color: $bright-color;
 	height: 50px;
 	border-bottom: 2px solid $dark-color;
 

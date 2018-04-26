@@ -3,41 +3,47 @@
 </style>
 
 <template>
-  <div class="page">
-    <form>
-      <div class="grid-container">
-        <div class="grid-x grid-padding-x">
-          <div class="large-12 medium-12 small-12 cell">
-            <label>Name
-              <input type="text" placeholder="Cafe name" v-model="name">
-              <span class="validation" v-show="!validations.name.is_valid">{{ validations.name.text }}</span>
-            </label>
-          </div>
-          <div class="large-12 medium-12 small-12 cell">
-            <label>Address
-              <input type="text" placeholder="Address" v-model="address">
-              <span class="validation" v-show="!validations.address.is_valid">{{ validations.address.text }}</span>
-            </label>
-          </div>
-          <div class="large-12 medium-12 small-12 cell">
-            <label>City
-              <input type="text" placeholder="City" v-model="city">
-              <span class="validation" v-show="!validations.city.is_valid">{{ validations.city.text }}</span>
-            </label>
-          </div>
-          <div class="large-12 medium-12 small-12 cell">
-            <label>Zip
-              <input type="text" placeholder="Zip" v-model="zip">
-              <span class="validation" v-show="!validations.zip.is_valid">{{ validations.zip.text }}</span>
-            </label>
-          </div>
-          <div class="large-12 medium-12 small-12 cell">
-			    <a class="button" v-on:click="submitNewCafe()">Add Cafe</a>
-			</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <form>
+                  <legend>New Cafe Shop</legend>
+                
+                  <div class="form-group">
+                    <label for="cafe-name">Name</label>
+                    <input type="text" class="form-control" id="cafe-name" placeholder="Cafe name" v-model="name">
+                    <span class="validation" v-show="!validations.name.is_valid">{{ validations.name.text }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cafe-address">Address</label>
+                    <input type="text" class="form-control" id="cafe-address" placeholder="Address" v-model="address">
+                    <span class="validation" v-show="!validations.address.is_valid">{{ validations.address.text }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cafe-city">City</label>
+                    <input type="text" class="form-control" id="cafe-city" placeholder="CIty" v-model="city">
+                    <span class="validation" v-show="!validations.city.is_valid">{{ validations.city.text }}</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cafe-zip">Zip</label>
+                    <input type="text" class="form-control" id="cafe-zip" placeholder="Zip" v-model="zip">
+                    <span class="validation" v-show="!validations.zip.is_valid">{{ validations.zip.text }}</span>
+                  </div>
+                    
+                  <button type="submit" class="btn btn-primary" v-on:click="submitNewCafe()">Submit</button>
+                </form>
+                
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            </div>
         </div>
-      </div>
-    </form>
-  </div>
+        
+    </div>
 </template>
 
 <script>
