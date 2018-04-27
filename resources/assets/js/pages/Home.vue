@@ -12,6 +12,8 @@
 	  	<router-link :to="{ name: 'cafe', params: {id: cafe.id} }">
 	  		{{ cafe.name + ' ' + cafe.address}}
 	  	</router-link>
+	  	<router-link :to="{ name: 'edit', params : {id: cafe.id}}" tag="button" class="btn btn-primary">Edit</router-link>
+	  	<router-link :to="{ name: 'destroy', params: {id: cafe.id}}" tag="button" class="btn btn-danger">Delete</router-link>
 	  </li>
 	</ul>
   </div>

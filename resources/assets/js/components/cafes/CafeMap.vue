@@ -64,8 +64,10 @@
 			}
 		},
 		mounted() {
+			let latitude = (this.location.latitude)? this.location.latitude : this.latitude;
+			let longitude = (this.location.longitude)? this.location.longitude : this.longitude;
 			this.map = new google.maps.Map(document.getElementById('cafe-map'), {
-		        center: {lat: parseFloat(this.latitude), lng: parseFloat(this.longitude)},
+		        center: {lat: parseFloat(latitude), lng: parseFloat(longitude)},
 		        zoom: this.zoom
 		      });
 			/**
