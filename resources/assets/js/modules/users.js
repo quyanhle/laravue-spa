@@ -29,10 +29,10 @@ export const users = {
 	          commit( 'setUsersLoadStatus', 3 );
 	        });
         },
-        loadUser( { commit }, data ){
+        loadUser({commit}){
         	commit( 'setUserLoadStatus', 1 );
 
-	      UserAPI.getUser( data.id )
+	      UserAPI.getUser()
 	        .then( function( response ){
 	          commit( 'setUser', response.data );
 	          commit( 'setUserLoadStatus', 2 );
@@ -45,7 +45,7 @@ export const users = {
     },
     mutations: {
 	    setUsersLoadStatus( state, status ){
-	    	state.userLoadStatus = status;
+	    	state.usersLoadStatus = status;
 	    },
 
 	    setUsers( state, users ){

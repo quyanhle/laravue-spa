@@ -8,7 +8,7 @@
 /*
   Adds the promise polyfill for IE 11
 */
-require('es6-promise').polyfill();
+// require('es6-promise').polyfill();
 
 /*
     Imports Vue and Vuex

@@ -3,6 +3,9 @@
 		width: 100%;
 		height: 600px;
 	}
+	div#content{
+		font-family: "Raleway";
+	}
 </style>
 
 <template>

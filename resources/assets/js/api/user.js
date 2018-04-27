@@ -5,15 +5,15 @@ import { LARAVUE_CONFIG } from '../config.js';
 
 export default {
 	/*
-        GET     /api/v1/cafes
+        GET     /api/v1/users
     */
     getUsers: function(){
         return axios.get( LARAVUE_CONFIG.API_URL + '/users' );
     },
     /*
-	  GET   /api/v1/cafes/{cafeID}
+	  GET   /api/v1/cafes/user
 	*/
-	getUser: function( userID ){
-	  return axios.get( LARAVUE_CONFIG.API_URL + '/users/' + userID );
+	getUser: function(){
+	  return axios.get( LARAVUE_CONFIG.API_URL + '/user');
 	},
 }

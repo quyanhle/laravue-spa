@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -13,9 +14,8 @@ class UserController extends Controller
         return response()->json($users);
     }
 
-    public function getUser($id)
+    public function getUser()
     {
-        $user = User::find($id);
-        return response()->json($user);
+        return response()->json(Auth::user());
     }
 }

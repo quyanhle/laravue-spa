@@ -13,7 +13,6 @@
 	  height: 50px;
 	  line-height: 50px;
 	  padding: 0px 20px 0px 20px;
-	  font-family: 'Josefin Sans', sans-serif;
 	  font-weight: bold;
 	  color: $dark-color;
 
@@ -34,7 +33,6 @@
 		margin-right: 10px;
 
 		a{
-		  font-family: 'Lato', sans-serif;
 		  font-weight: bold;
 		  color: $black;
 
@@ -54,6 +52,10 @@
 		border-radius: 40px;
 		margin-top: 5px;
 		margin-right: 10px;
+	  }
+	  p {
+	  	float: left;
+	  	margin-right: 25px;
 	  }
 	}
 
@@ -82,6 +84,7 @@
 	</ul>
 
 	<div class="right">
+		<p>Hello {{user.name}}</p>
 	  <img class="avatar" :src="user.avatar" v-show="userLoadStatus == 2"/>
 	</div>
 
@@ -90,9 +93,6 @@
 
 <script>
   export default {
-	created(){
-	  this.$store.dispatch('loadUser', 1);
-	},
 	/*
 	  Defines the computed properties on the component.
 	*/

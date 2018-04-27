@@ -14,7 +14,7 @@ import VueRouter from 'vue-router'
 /*
     Extends Vue to use Vue Router
 */
-Vue.use( VueRouter )
+Vue.use(VueRouter)
 
 /*
     Makes a new VueRouter that we will use to run all of the routes
