@@ -1,41 +1,39 @@
 <template>
 	<div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <form>
                   <legend>Edit Cafe Shop</legend>
                 
                   <div class="form-group">
                     <label for="cafe-name">Name</label>
-                    <input type="text" class="form-control" id="cafe-name" v-bind:placeholder="this.cafe.name"  v-model="name">
+                    <input type="text" class="form-control" id="cafe-name"  v-model="name" >
                     <span class="validation" v-show="!validations.name.is_valid">{{ validations.name.text }}</span>
                   </div>
 
                   <div class="form-group">
                     <label for="cafe-address">Address</label>
-                    <input type="text" class="form-control" id="cafe-address" v-bind:placeholder="this.cafe.address"  v-model="address">
+                    <input type="text" class="form-control" id="cafe-address"  v-model="address" >
                     <span class="validation" v-show="!validations.address.is_valid">{{ validations.address.text }}</span>
                   </div>
 
                   <div class="form-group">
                     <label for="cafe-city">City</label>
-                    <input type="text" class="form-control" id="cafe-city" v-bind:placeholder="this.cafe.city"  v-model="city">
+                    <input type="text" class="form-control" id="cafe-city"  v-model="city">
                     <span class="validation" v-show="!validations.city.is_valid">{{ validations.city.text }}</span>
                   </div>
 
                   <div class="form-group">
                     <label for="cafe-zip">Zip</label>
-                    <input type="text" class="form-control" id="cafe-zip" v-bind:placeholder="this.cafe.zip"  v-model="zip">
+                    <input type="text" class="form-control" id="cafe-zip" v-model="zip" >
                     <span class="validation" v-show="!validations.zip.is_valid">{{ validations.zip.text }}</span>
                   </div>
                     
                   <button type="submit" class="btn btn-primary" v-on:click="submit()">Submit</button>
                 </form>
                 
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
             </div>
         </div>
         
@@ -52,10 +50,11 @@ export default {
 
   data () {
     return {
-    	name: '',
-    	address: '',
-    	city: '',
-    	zip: '',
+    	name: this.$store.getters.getCafe.name,
+    	address: this.$store.getters.getCafe.address,
+    	city: this.$store.getters.getCafe.city,
+    	zip: this.$store.getters.getCafe.zip,
+        id: this.$store.getters.getCafe.id,
     	validations : {
     		name: {
     			is_valid: true,
@@ -75,11 +74,6 @@ export default {
     		}
     	}
     }
-  },
-  computed: {
-  	cafe() {
-  		return this.$store.getters.getCafe;
-  	}
   },
   methods: {
   		 validateCafe(){
