@@ -39,7 +39,8 @@
 		data() {
 			return {
 				markers: [],
-				infoWindows: []
+				infoWindows: [],
+				currentInfoWindow: {}
 			}
 		},
 		computed: {
@@ -143,6 +144,10 @@
 			},
 			openInfo(marker, infoWindow){
 			    google.maps.event.addListener(marker, 'click', function() {
+			    	if (this.currentInfoWindow) {
+			    		this.currentInfoWindow.close();
+			    	}
+			    	this.currentInfoWindow = infoWindow;
 			    	infoWindow.open(this.map, marker);
 			    });
 			}
