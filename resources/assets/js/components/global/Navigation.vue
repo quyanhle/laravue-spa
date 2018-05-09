@@ -5,6 +5,7 @@
 	background-color: $bright-color;
 	height: 50px;
 	border-bottom: 2px solid $dark-color;
+	font-family: $font-family-sans-serif;
 
 	span.logo{
 	  border-right: 1px solid $dark-color;

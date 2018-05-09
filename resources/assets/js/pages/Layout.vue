@@ -4,8 +4,14 @@
 
 <template>
   <div id="app-layout">
-  	<Navigation></Navigation>
-  	<router-view></router-view>
+    <div class="container-fluid">
+         <div class="row">
+               <Navigation></Navigation>
+         </div>
+         <div class="row">
+  	         <router-view></router-view>
+         </div>
+    </div>
   </div>
 </template>
 

@@ -1,10 +1,11 @@
 <style lang="scss">
+	@import '~@/abstracts/_variables.scss';
 	div#cafe-map{
 		width: 100%;
 		height: 600px;
 	}
 	div#content{
-		font-family: "Raleway";
+		font-family: $font-family-sans-serif;
 	}
 </style>
 
@@ -144,11 +145,12 @@
 			},
 			openInfo(marker, infoWindow){
 			    google.maps.event.addListener(marker, 'click', function() {
-			    	if (this.currentInfoWindow) {
+			    	console.log(this.currentInfoWindow);
+			    	if (this.currentInfoWindow != null) {
 			    		this.currentInfoWindow.close();
 			    	}
-			    	this.currentInfoWindow = infoWindow;
 			    	infoWindow.open(this.map, marker);
+			    	this.currentInfoWindow = infoWindow;
 			    });
 			}
 		}
