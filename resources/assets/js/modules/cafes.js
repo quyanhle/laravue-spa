@@ -15,6 +15,7 @@ export const cafes = {
 		cafe: {},
 		cafeLoadStatus: 0,
 		cafeAddStatus: 0,
+		cafeUpdatedStatus: 0,
 		currentLocation: {}
 	},
 	actions: {
@@ -55,6 +56,17 @@ export const cafes = {
         			commit('setCafeAddedStatus', 3);
         		});
         },
+        updateCafe({commit, state, dispatch}, data) {
+        	commit ('setCafeUpdatedStatus', 1);
+        	CafeAPI.updateCafe(data.id, data.name, data.address, data.city, data.zip)
+        		.then(function (response) {
+        			commit('setCafeUpdatedStatus', 2);
+        			dispatch('loadCafes');
+        		})
+        		.catch(function () {
+        			commit('setCafeUpdatedStatus', 3);
+        		});
+        },
         loadCurrentLocation({commit}) {
         	CafeAPI.getLocation()
         		.then(function (response) {
@@ -85,6 +97,9 @@ export const cafes = {
 	    setCafeAddedStatus(state, status) {
 	    	state.cafeAddStatus = status;
 	    },
+	    setCafeUpdatedStatus (state, status) {
+	    	state.cafeUpdatedStatus = status;
+	    },
 	    setCurrentLocation(state, location) {
 	    	state.currentLocation = location;
 	    }
@@ -107,6 +122,9 @@ export const cafes = {
 	    },
 	    getCafeAddStatus(state){
 	    	return state.cafeAddStatus;
+	    },
+	    getCafeUpdatedStatus(state) {
+	    	return state.cafeUpdatedStatus;
 	    },
 	    getCurrentLocation(state) {
 	    	return state.currentLocation;

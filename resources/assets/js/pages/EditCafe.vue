@@ -49,6 +49,7 @@ export default {
     name: 'EditCafe',
     created() {
         this.$store.dispatch('loadCafe', this.$route.params);
+        console.log(this.$store.getters.getCafe);
     },
 
     data() {
@@ -125,7 +126,7 @@ export default {
         },
         submit() {
             if (this.validateCafe()) {
-                this.$store.dispatch('addCafe', {
+                this.$store.dispatch('updateCafe', {
                 name: this.name,
                 address: this.address,
                 city: this.city,

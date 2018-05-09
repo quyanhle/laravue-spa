@@ -24,4 +24,5 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
     Route::post('/cafes', 'API\CafesController@postNewCafe');
     Route::get('/cafes/{id}', 'API\CafesController@getCafe');
     Route::get('/location', 'API\CafesController@getCurrentLocation');
+    Route::post('/cafes/{id}/update', 'API\CafesController@updateCafe');
 });

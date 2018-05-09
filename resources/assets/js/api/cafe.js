@@ -29,6 +29,18 @@ export default {
 		    }
 		)
 	},
+
+	updateCafe: function (id, name, address, city, zip) {
+		return axios.post( LARAVUE_CONFIG.API_URL + '/cafes/' + id + '/update', 
+			{
+				id: id,
+				name: name,
+				address: address,
+				city: city,
+				zip: zip
+			}
+		)
+	},
 	/**
 	 * GET /api/v1/location
 	 */
