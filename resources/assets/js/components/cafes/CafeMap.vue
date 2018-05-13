@@ -144,12 +144,12 @@
 				}
 			},
 			openInfo(marker, infoWindow){
-			    google.maps.event.addListener(marker, 'click', function() {
-			    	console.log(this.currentInfoWindow);
+			    marker.addListener('click', function() {
 			    	if (this.currentInfoWindow != null) {
 			    		this.currentInfoWindow.close();
 			    	}
 			    	infoWindow.open(this.map, marker);
+			    	this.currentInfoWindow = {};
 			    	this.currentInfoWindow = infoWindow;
 			    });
 			}

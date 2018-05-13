@@ -3,15 +3,13 @@
 </style>
 
 <template>
-  <div id="app-layout">
-    <div class="container-fluid">
-         <div class="row">
-               <Navigation></Navigation>
-         </div>
-         <div class="row">
-  	         <router-view></router-view>
-         </div>
-    </div>
+  <div class="container-fluid" id="app-layout">
+     <div class="row">
+           <Navigation></Navigation>
+     </div>
+     <div class="row">
+	         <router-view></router-view>
+     </div>
   </div>
 </template>
 

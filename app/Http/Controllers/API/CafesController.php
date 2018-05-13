@@ -40,13 +40,16 @@ class CafesController extends Controller
         return response()->json($cafe, 201);
     }
 
-    public function updateCafe(Request $request, $id)
+    public function updateCafe($id, Request $request)
     {
         $cafe = Cafe::find($id);
         if ($cafe) {
-            $data = $request->all();
-            $cafe->update($data);
-            return response()->json(Cafe::find($id), 201);
+            $cafe->name    = $request->name;
+            $cafe->address = $request->address;
+            $cafe->city    = $request->city;
+            $cafe->zip     = $request->zip;
+            $cafe->save();
+            return response()->json($cafe, 201);
         }
     }
 

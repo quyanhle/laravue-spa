@@ -21,8 +21,8 @@
 <script>
 	import CafeMap from '../components/cafes/CafeMap';
   export default {
-        created() {
-            this.$store.dispatch('loadCafe', this.$route.params);
+        async created() {
+            await this.$store.dispatch('loadCafe', this.$route.params);
         },
   		components: {
   			CafeMap

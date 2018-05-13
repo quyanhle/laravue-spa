@@ -35,15 +35,15 @@ export const cafes = {
         async loadCafe( { commit }, data ){
         	commit( 'setCafeLoadStatus', 1 );
 
-	    await CafeAPI.getCafe( data.id )
-	        .then( function( response ){
-	          commit( 'setCafe', response.data );
-	          commit( 'setCafeLoadStatus', 2 );
-	        })
-	        .catch( function(){
-	          commit( 'setCafe', {} );
-	          commit( 'setCafeLoadStatus', 3 );
-	        });
+	    	await CafeAPI.getCafe( data.id )
+		        .then( function( response ){
+		          commit( 'setCafe', response.data );
+		          commit( 'setCafeLoadStatus', 2 );
+		        })
+		        .catch( function(){
+		          commit( 'setCafe', {} );
+		          commit( 'setCafeLoadStatus', 3 );
+		        });
         },
         addCafe( {commit, state, dispatch}, data){
         	commit ('setCafeAddedStatus', 1);

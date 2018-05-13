@@ -47,20 +47,20 @@
 export default {
     async created() {
         await this.$store.dispatch('loadCafe', this.$route.params);
+        this.id = this.getCafe.id;
         this.name = this.getCafe.name;
         this.address = this.getCafe.address;
         this.city = this.getCafe.city;
         this.zip = this.getCafe.zip;
-        this.id = this.getCafe.id;
     },
 
     data() {
         return {
+            id: '',
             name: '',
             address: '',
             city: '',
             zip: '',
-            id: '',
             validations : {
                 name: {
                 is_valid: true,
@@ -134,13 +134,13 @@ export default {
         submit() {
             if (this.validateCafe()) {
                 this.$store.dispatch('updateCafe', {
-                name: this.name,
-                address: this.address,
-                city: this.city,
-                zip: this.zip,
-                id: this.id
+                    id: this.id,
+                    name: this.name,
+                    address: this.address,
+                    city: this.city,
+                    zip: this.zip,
                 });
-                this.$router.push({name: 'cafes'});
+                this.$router.push({name: 'home'});
             }
         }
     }
