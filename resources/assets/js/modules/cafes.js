@@ -32,10 +32,10 @@ export const cafes = {
 	          commit( 'setCafesLoadStatus', 3 );
 	        });
         },
-        loadCafe( { commit }, data ){
+        async loadCafe( { commit }, data ){
         	commit( 'setCafeLoadStatus', 1 );
 
-	      CafeAPI.getCafe( data.id )
+	    await CafeAPI.getCafe( data.id )
 	        .then( function( response ){
 	          commit( 'setCafe', response.data );
 	          commit( 'setCafeLoadStatus', 2 );

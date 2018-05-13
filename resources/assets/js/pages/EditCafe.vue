@@ -3,62 +3,64 @@
 
 <template>
     <div>
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    </div>
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        <form>
-          <legend>Edit Cafe Shop</legend>
-        
-          <div class="form-group">
-            <label for="cafe-name">Name</label>
-            <input type="text" class="form-control" id="cafe-name"  v-model="name" >
-            <span class="validation" v-show="!validations.name.is_valid">{{ validations.name.text }}</span>
-          </div>
-
-          <div class="form-group">
-            <label for="cafe-address">Address</label>
-            <input type="text" class="form-control" id="cafe-address"  v-model="address" >
-            <span class="validation" v-show="!validations.address.is_valid">{{ validations.address.text }}</span>
-          </div>
-
-          <div class="form-group">
-            <label for="cafe-city">City</label>
-            <input type="text" class="form-control" id="cafe-city"  v-model="city">
-            <span class="validation" v-show="!validations.city.is_valid">{{ validations.city.text }}</span>
-          </div>
-
-          <div class="form-group">
-            <label for="cafe-zip">Zip</label>
-            <input type="text" class="form-control" id="cafe-zip" v-model="zip" >
-            <span class="validation" v-show="!validations.zip.is_valid">{{ validations.zip.text }}</span>
-          </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <form>
+              <legend>Edit Cafe Shop</legend>
             
-          <button type="submit" class="btn btn-primary" v-on:click="submit()">Submit</button>
-        </form>
+              <div class="form-group">
+                <label for="cafe-name">Name</label>
+                <input type="text" class="form-control" id="cafe-name"  v-model="name" >
+                <span class="validation" v-show="!validations.name.is_valid">{{ validations.name.text }}</span>
+              </div>
+
+              <div class="form-group">
+                <label for="cafe-address">Address</label>
+                <input type="text" class="form-control" id="cafe-address"  v-model="address" >
+                <span class="validation" v-show="!validations.address.is_valid">{{ validations.address.text }}</span>
+              </div>
+
+              <div class="form-group">
+                <label for="cafe-city">City</label>
+                <input type="text" class="form-control" id="cafe-city"  v-model="city">
+                <span class="validation" v-show="!validations.city.is_valid">{{ validations.city.text }}</span>
+              </div>
+
+              <div class="form-group">
+                <label for="cafe-zip">Zip</label>
+                <input type="text" class="form-control" id="cafe-zip" v-model="zip" >
+                <span class="validation" v-show="!validations.zip.is_valid">{{ validations.zip.text }}</span>
+              </div>
+                
+              <button type="submit" class="btn btn-primary" v-on:click="submit()">Submit</button>
+            </form>
         
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        </div>
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    </div>
-</div>
         
 </template>
 
 <script>
 export default {
-
-    name: 'EditCafe',
-    created() {
-        this.$store.dispatch('loadCafe', this.$route.params);
-        console.log(this.$store.getters.getCafe);
+    async created() {
+        await this.$store.dispatch('loadCafe', this.$route.params);
+        this.name = this.getCafe.name;
+        this.address = this.getCafe.address;
+        this.city = this.getCafe.city;
+        this.zip = this.getCafe.zip;
+        this.id = this.getCafe.id;
     },
 
     data() {
         return {
-            name: this.$store.getters.getCafe.name,
-            address: this.$store.getters.getCafe.address,
-            city: this.$store.getters.getCafe.city,
-            zip: this.$store.getters.getCafe.zip,
-            id: this.$store.getters.getCafe.id,
+            name: '',
+            address: '',
+            city: '',
+            zip: '',
+            id: '',
             validations : {
                 name: {
                 is_valid: true,
@@ -77,6 +79,11 @@ export default {
                 text: '',
                 }
             }
+        }
+    },
+    computed: {
+        getCafe() {
+            return this.$store.getters.getCafe;
         }
     },
     methods: {
