@@ -7,13 +7,17 @@
         <link href="/css/app.css" rel="stylesheet" type="text/css"/>
 
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> -->
 
-        <title>Roast</title>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Okcb4cpJv9pyJkQsuWRMCMKd2EbONUo"></script>
+
+        <title>Laravue</title>
 
         <script type='text/javascript'>
              window.Laravel = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-            ]); ?>
+    'csrfToken' => csrf_token(),
+]); ?>
         </script>
     </head>
     <body>
@@ -22,7 +26,7 @@
             <router-view></router-view>
         </div>
 
-        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
 
     </body>
 </html>
