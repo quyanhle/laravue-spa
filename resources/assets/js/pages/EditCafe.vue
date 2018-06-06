@@ -7,7 +7,7 @@
         </div>
         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
             <form>
-              <legend>Edit Cafe Shop</legend>
+              <legend>Edit Cafe Shop Test ungit</legend>
             
               <div class="form-group">
                 <label for="cafe-name">Name</label>
