@@ -2,14 +2,14 @@
     Defines the API route we are using.
 */
 var api_url = '';
-var google_maps_js_api = 'AIzaSyC5Okcb4cpJv9pyJkQsuWRMCMKd2EbONUo';
+var google_maps_js_api = 'AIzaSyChULvzGwFu_-g8cuyNtKegW6xsD0nJ_sc';
 
 switch( process.env.NODE_ENV ){
   case 'development':
-    api_url = 'https://laravue.alex.vm/api/v1';
+    api_url = 'https://laravue.vm/api/v1';
   break;
   case 'production':
-    api_url = 'https://laravue.alex.vm/api/v1';
+    api_url = 'https://laravue.vm/api/v1';
   break;
 }
 
